@@ -50,7 +50,7 @@ jobs:
 
   Second-Job:
     name: The second job running on another runner
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: Example-Actions-Job
     steps:
       - run: echo "This job is now running on a ${{ runner.os }} server hosted by GitHub."
