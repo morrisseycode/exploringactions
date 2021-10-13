@@ -1,5 +1,9 @@
 name: GitHub Actions Demo
-on: push
+
+on:
+  repository_dispatch:
+    types: [run_my_workflow]
+
 jobs:
   Example-Actions-Job:
     name: Exploring GitHub Actions
