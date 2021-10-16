@@ -1,15 +1,23 @@
 name: GitHub Actions Demo
 
 on:
-  repository_dispatch:
-    types: [run_my_workflow]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Enter the name'
+        required: true
+      deploy:
+        description: 'Deploy code after build (yes/no)'
+        required: false
+        default: 'yes'
 
 jobs:
   Example-Actions-Job:
     name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Payload field is ${{ github.event.client_payload.mydata }}"
+      - run: echo "Name - ${{ github.event.inputs.name }}"
+      - run: echo "Deploy code - ${{ github.event.inputs.deploy }}"
       
       # Display the event that triggered the workflow
       - run: echo "The job was triggered by a ${{ github.event_name }} event."
