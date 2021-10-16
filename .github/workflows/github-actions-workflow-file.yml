@@ -6,6 +6,7 @@ on:
       name:
         description: 'Enter the name'
         required: true
+        default: 'GitHub User'
       deploy:
         description: 'Deploy code after build (yes/no)'
         required: false
