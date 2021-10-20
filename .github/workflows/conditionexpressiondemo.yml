@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: YES was passed as workflow input
-        if: github.event.inputs.failstep == 'yes'
+        if: ${{ github.event.inputs.failstep == 'yes' }}
         run: echo "Value passed by workflow_dispatch is YES to fail workflow." 
 
       - name: NO was passed as workflow input
