@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     
     needs: first-job
-
+    if: always()
     steps:
       - name: Sample step in job
         run:  echo "Sample step output" 
