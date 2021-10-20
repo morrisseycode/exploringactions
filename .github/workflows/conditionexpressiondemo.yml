@@ -16,7 +16,7 @@ jobs:
     steps:
     
       - name: checkout code if running on master branch
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/checkout@v2
         
       - name: YES was passed as workflow input
