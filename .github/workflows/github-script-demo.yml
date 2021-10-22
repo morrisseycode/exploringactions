@@ -1,0 +1,27 @@
+name: Testing Github-Script
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v5
+        id: create-comment
+        with:
+          script: |
+            console.log(context);
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "This is comment #1",
+              body: "I created this using the github-script action!"
+            });
+
+            return "Some return data!";
+
+      - name: Get result
+        run: echo "${{steps.create-comment.outputs.result}}"
