@@ -1,0 +1,28 @@
+name: Job Output Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  JOB1:
+    
+    runs-on: ubuntu-latest
+    
+    outputs:
+      message: "This is a message coming from job 1"
+      url: ${{ steps.step1.outputs.url }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: step1
+        name: send url to other job
+        run: echo "::set-output name=url::https://pluralsight.com"
+
+  JOB2:
+    needs: JOB1
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: echo ${{ needs.JOB1.outputs.message }}
+
+      - run: echo ${{ needs.JOB1.outputs.url }}
